@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  web:
+    build: ./web
+    volumes:
+      - ./web:/app
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - devnet
+  facebook:
+    build: ./facebook
+    volumes:
+      - ./facebook:/app
+    networks:
+      - devnet
+  combiner:
+    build: ./combiner
+    volumes:
+      - ./combiner:/app
+    networks:
+      - devnet
+  mongodb:
+    image: mongo
+    networks:
+      - devnet
+networks:
+  devnet:

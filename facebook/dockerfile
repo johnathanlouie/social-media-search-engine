@@ -1,0 +1,9 @@
+FROM python:2.7.18-alpine3.11
+RUN pip2 install facebook-sdk
+RUN pip2 install beautifulsoup4
+RUN pip2 install pymongo
+# RUN pip2 install autopy
+RUN pip2 install Ghost.py
+RUN pip2 install autopep8
+RUN pip2 install PyYAML
+ENTRYPOINT python2 fb.py
