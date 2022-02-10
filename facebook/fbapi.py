@@ -1,19 +1,22 @@
 import facebook
-
-
-# FacebookAPI class that wraps up the call to Facebook-sdk api
+import yaml
 
 
 class FacebookAPI(object):
+    """
+    FacebookAPI class that wraps up the call to Facebook-sdk api
+    """
 
     def __init__(self):
-        app_id = "565706786893040"
-        app_secret = "73ed9c7a6bf22bde6c371199f3447ce7"
-        self.oauth_access_token = "EAACEdEose0cBAGiGeoe1RuFqIRZAqpnSiDbx7NZCzPh4ZB5R9ZCWQ7DetVJIsBPjk4dhdD89TGnvqFbUJPHuXHJbZBiEAtmIcWOMKZAxyOGQM2a4VPVxRlde4pZBdT1rkOHR5pZB8oeoh1MlU3THCZASZBPSzYr0sXpAHAIZAljZAhx81kBZAggY8t0pZCBwwW7nYn0ZAoZD"
-
-    # @return list of profiles matching the query, with size up to limit
+        config = yaml.load(open('fbapi.yaml'))
+        app_id = config['app_id']
+        app_secret = config['app_secret']
+        self.oauth_access_token = config['oauth_access_token']
 
     def searchUser(self, query, limit=10):
+        """
+        @return list of profiles matching the query, with size up to limit
+        """
         self.facebook_graph = facebook.GraphAPI(self.oauth_access_token)
         listP = self.facebook_graph.get_object("search?q="+query+"&type=user&access_token="+self.oauth_access_token+"&limit="+str(limit)+"&fields=link,name")
         print listP['data']
