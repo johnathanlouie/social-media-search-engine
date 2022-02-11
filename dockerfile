@@ -5,6 +5,7 @@ RUN mvn install
 
 
 FROM node:16.14.0-alpine3.14 as web
+RUN apk add openjdk8
 WORKDIR /app
 COPY ./web .
 RUN npm install
