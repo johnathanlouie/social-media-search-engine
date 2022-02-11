@@ -12,7 +12,7 @@ services:
     networks:
       - devnet
   mongodb:
-    image: mongo
+    image: mongo:2.2.7
     networks:
       - devnet
 networks:
