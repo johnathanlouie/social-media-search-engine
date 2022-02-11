@@ -36,41 +36,46 @@ class Facebook(object):
         return prof
 
 
-fb = Facebook()
-profiles = ""
-if isinstance(fb, Facebook):
-    print "Made fb"
+def run():
+    fb = Facebook()
+    profiles = ""
+    if isinstance(fb, Facebook):
+        print "Made fb"
 
-print 'Number of arguments:', len(sys.argv), 'arguments.'
-print 'Argument List:', str(sys.argv)
-if(len(sys.argv) > 2):
-    profiles = fb.getProfiles(sys.argv[1], sys.argv[2])
-    print sys.argv[1]
-else:
-    profiles = fb.getProfiles("Hamza", "Salehbhai")
+    print 'Number of arguments:', len(sys.argv), 'arguments.'
+    print 'Argument List:', str(sys.argv)
+    if(len(sys.argv) > 2):
+        profiles = fb.getProfiles(sys.argv[1], sys.argv[2])
+        print sys.argv[1]
+    else:
+        profiles = fb.getProfiles("Hamza", "Salehbhai")
 
-print profiles
-print "executed"
+    print profiles
+    print "executed"
 
-# profiles = [{'gender': u'Male', 'birthdate': u'January 17, 1989', 'phone': u'(415) 342-7816', 'full_name': #u'Hamza Salehbhai', 'address': u'Mill Valley, California', 'email': u'hamza8907@yahoo.com'}]
+    # profiles = [{'gender': u'Male', 'birthdate': u'January 17, 1989', 'phone': u'(415) 342-7816', 'full_name': #u'Hamza Salehbhai', 'address': u'Mill Valley, California', 'email': u'hamza8907@yahoo.com'}]
 
-root = ET.Element("Profiles")
-# write profile to an xml Person Format
-for prof in profiles:
-    doc = ET.SubElement(root, "Profile")
-    fne = ET.SubElement(doc, "FirstName")
-    lne = ET.SubElement(doc, "LastName")
-    em = ET.SubElement(doc, "Emails")
-    eme = ET.SubElement(em, "Email")
-    ge = ET.SubElement(doc, "Gender")
-    if "full_name" in prof:
-        full_name = prof["full_name"].split(" ")
-        fne.text = full_name[0]
-        lne.text = full_name[1]
-    if "email" in prof:
-        eme.text = prof["email"]
-    if "gender" in prof:
-        ge.text = prof["gender"]
+    root = ET.Element("Profiles")
+    # write profile to an xml Person Format
+    for prof in profiles:
+        doc = ET.SubElement(root, "Profile")
+        fne = ET.SubElement(doc, "FirstName")
+        lne = ET.SubElement(doc, "LastName")
+        em = ET.SubElement(doc, "Emails")
+        eme = ET.SubElement(em, "Email")
+        ge = ET.SubElement(doc, "Gender")
+        if "full_name" in prof:
+            full_name = prof["full_name"].split(" ")
+            fne.text = full_name[0]
+            lne.text = full_name[1]
+        if "email" in prof:
+            eme.text = prof["email"]
+        if "gender" in prof:
+            ge.text = prof["gender"]
 
-tree = ET.ElementTree(root)
-tree.write("profiles.xml")
+    tree = ET.ElementTree(root)
+    tree.write("profiles.xml")
+
+
+if __name__ == '__main__':
+    run()
