@@ -18,6 +18,6 @@ function runCombiner()
 
 function handler(data, status)
 {
-	console.log(`connection ${status}`);
+	console.log(`/combiner/run connection ${status}`);
 	console.log(data);
 }
