@@ -3,7 +3,7 @@
 var express = require("express");
 var app = express();
 var fs = require("fs");
-
+const helpers = require("./helpers.js");
 var bodyParser = require('body-parser');
 //app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json({limit: "50mb"}));
@@ -19,20 +19,6 @@ app.use(missing);
 app.use(broke);
 
 var dao = require("./dao.js");
-
-function ensureArray(data)
-{
-	console.log("function ensureArray");
-	if (!Array.isArray(data))
-	{
-		console.log(" - data converted to array");
-		data = [data];
-	} else
-	{
-		console.log(" - data already array");
-	}
-	return data;
-}
 
 function getAllHandler(req, res)
 {
@@ -67,7 +53,7 @@ function insertHandler(req, res)
 	var collectionName = req.params.collectionName;
 	var data = req.body;
 //    data = chBody(data);
-	data = ensureArray(data);
+	data = helpers.ensureArray(data);
 	dao.insert(collectionName, data).then(handlerSuccess).catch(handlerFail);
 }
 
@@ -96,7 +82,7 @@ function runCombinerHandler(req, res)
 	console.log("function runCombinerHandler");
 	var data = req.body;
 	console.log(JSON.stringify(data));
-	data = ensureArray(data);
+	data = helpers.ensureArray(data);
 	if (data.length === 3)
 	{
 		var col1 = data[0];
