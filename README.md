@@ -2,6 +2,9 @@
 Universal Profile is a search engine designed to find people, companies, and social groups more easily. The system crawls various social media platforms and combines each entity into a unified profile by several similarity metrics, which fleshes out profiles by filling in missing information gathered from other platforms.
 
 # Docker
+Add secrets to:
+* `<project>/combiner/src/main/resources/client_secrets.json`
+* `<project>/facebook/fbapi.yaml`
 ```bash
 docker compose up --build
 ```
