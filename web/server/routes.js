@@ -165,5 +165,14 @@ function serverSuccess()
 	console.log(`Server is listening on port ${cfg.server.port}!`);
 }
 
-var cfg = require("./config.js");
-app.listen(cfg.server.port, serverSuccess);
+function startServer(err, data)
+{
+	if (err)
+	{
+		console.error(`Cannot read config file. ${err}`);
+	}
+	var cfg = JSON.parse(data);
+	app.listen(cfg.server.port, serverSuccess);
+}
+
+fs.readFile("./config.json", "uft8", startServer);
