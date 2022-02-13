@@ -14,7 +14,7 @@ Go to `http://localhost`.
 * Install Node.js.
 * Install MongoDB.
 ```bash
-cd <project home>/web/
+cd <project>/web/
 npm install
 ```
 
@@ -33,14 +33,14 @@ pip install Ghost.py
 * Install Java 8 or later.
 * Install Apache Maven.
 ```bash
-cd <project home>/combiner/
+cd <project>/combiner/
 mvn install
 ```
 
 # Running Web Server
 * Run MongoDB.
 ```bash
-cd <project home>/web/
+cd <project>/web/
 npm start
 ```
 * You should be able to see "Server is listening on port <port number>".
@@ -52,20 +52,20 @@ npm start
 # Running Facebook Crawler
 * Run MongoDB.
 ```bash
-cd <project home>/facebook/
+cd <project>/facebook/
 python fb.py
 ```
 
 # Running Combiner
 * Run MongoDB.
 ```bash
-cd <project home>/combiner/
+cd <project>/combiner/
 java -jar target/uniprofile-1.0.jar <source 1> <source 2> <destination>
 ```
 
 # Running Google Crawler
 * Run MongoDB.
 ```bash
-cd <project home>/combiner/
+cd <project>/combiner/
 java -cp target/uniprofile-1.0.jar socialmedia.googlePlus.GooglePlusExtractor
 ```
