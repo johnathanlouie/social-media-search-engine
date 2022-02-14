@@ -79,13 +79,13 @@ public class Combiner {
         Combiner combiner = new Combiner();
         List<Person> cmb = combiner.start("Sashi Thapaliya");
         for (int i = 0; i < cmb.size(); i++) {
-            System.out.println((Person) cmb.get(i));
+            System.out.println(cmb.get(i));
         }
         System.exit(1);
         if (args.length > 3) {
 
         }
-        LinkedList<Person> fp = combiner.getFacebookProfiles("Sashi Thapaliya");
+        List<Person> fp = combiner.getFacebookProfiles("Sashi Thapaliya");
         if (fp != null) {
             for (int i = 0; i < fp.size(); i++) {
                 System.out.println(fp.get(i));
