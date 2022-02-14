@@ -44,8 +44,8 @@ public class Combiner {
 
     public void retrieveProfiles(LinkedList<LinkedList> collection, String query) {
         LinkedList fb, gP;
-        fb = this.getFacebookProfiles(query);
-        gP = this.getGooglePlusProfiles(query);
+        fb = getFacebookProfiles(query);
+        gP = getGooglePlusProfiles(query);
         if (fb != null && fb.size() > 0) {
             collection.add(fb);
         }
@@ -57,15 +57,15 @@ public class Combiner {
 
     public LinkedList<Person> combine(LinkedList<LinkedList> collection) {
         for (int i = 0; i < collection.size(); i++) {
-            this.ce.addCollection(collection.get(i));
+            ce.addCollection(collection.get(i));
         }
-        return this.ce.combineAll();
+        return ce.combineAll();
     }
 
     public List<Person> start(String query) {
         LinkedList<LinkedList> collec = new LinkedList();
-        List<Person> combined = this.combine(collec);
-        this.retrieveProfiles(collec, query);
+        List<Person> combined = combine(collec);
+        retrieveProfiles(collec, query);
         // store in the database 
 
         return combined;
