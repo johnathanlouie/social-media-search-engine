@@ -19,8 +19,8 @@ public class Education implements Json {
     private String level;
 
     public Education() {
-        major = new LinkedList();
-        minor = new LinkedList();
+        major = new LinkedList<String>();
+        minor = new LinkedList<String>();
     }
 
     public void setGpa(double gpa) {
