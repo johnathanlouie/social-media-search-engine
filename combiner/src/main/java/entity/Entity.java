@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Entity class is an abstract class that can be extended by any class that
@@ -15,10 +16,10 @@ import java.util.HashMap;
  */
 public abstract class Entity {
 
-    public HashMap<String, Object> fieldValuePair;
+    protected Map<String, Object> fieldValuePair;
 
     public Entity() {
-        this.fieldValuePair = new HashMap();
+        fieldValuePair = new HashMap<String, Object>();
     }
 
     public abstract Entity union(Entity e1, Entity e2);
