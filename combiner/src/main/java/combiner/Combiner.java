@@ -3,6 +3,7 @@ package combiner;
 import entity.Person;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -63,7 +64,7 @@ public class Combiner {
         return this.ce.combineAll();
     }
 
-    public LinkedList start(String query) {
+    public LinkedList<Person> start(String query) {
         LinkedList<LinkedList> collec;
         LinkedList<Person> combined;
         collec = new LinkedList();
@@ -76,7 +77,7 @@ public class Combiner {
 
     public static void main(String[] args) {
         Combiner combiner = new Combiner();
-        LinkedList cmb = combiner.start("Sashi Thapaliya");
+        List<Person> cmb = combiner.start("Sashi Thapaliya");
         for (int i = 0; i < cmb.size(); i++) {
             System.out.println((Person) cmb.get(i));
         }
