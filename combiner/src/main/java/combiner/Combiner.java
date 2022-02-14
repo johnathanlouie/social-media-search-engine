@@ -19,7 +19,6 @@ public class Combiner {
     }
 
     public LinkedList<Person> getFacebookProfiles(String fullName) {
-        LinkedList fbProfiles = null;
         try {
             // start process
             Process myProcess = Runtime.getRuntime().exec(
@@ -28,14 +27,14 @@ public class Combiner {
 
             // xml profiles should be written if profiles found on facebook
             // filename
-            fbProfiles = PersonReader.xmlDocument("profiles.xml");
+            return PersonReader.xmlDocument("profiles.xml");
         } catch (IOException ex) {
             Logger.getLogger(Combiner.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
             Logger.getLogger(Combiner.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return fbProfiles;
+        return new LinkedList<>();
     }
 
     public LinkedList getGooglePlusProfiles(String fullName) {
