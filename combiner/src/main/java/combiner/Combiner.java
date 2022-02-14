@@ -18,7 +18,7 @@ public class Combiner {
         this.ce = new CombinerEngine(new SpecialPersonChecker());
     }
 
-    public LinkedList getFacebookProfiles(String fullName) {
+    public LinkedList<Person> getFacebookProfiles(String fullName) {
         LinkedList fbProfiles = null;
         try {
             // start process
@@ -84,11 +84,8 @@ public class Combiner {
         if (args.length > 3) {
 
         }
-        List<Person> fp = combiner.getFacebookProfiles("Sashi Thapaliya");
-        if (fp != null) {
-            for (int i = 0; i < fp.size(); i++) {
-                System.out.println(fp.get(i));
-            }
+        for (Person p : combiner.getFacebookProfiles("Sashi Thapaliya")) {
+            System.out.println(p);
         }
     }
 }
