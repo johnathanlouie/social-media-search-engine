@@ -235,5 +235,6 @@ public class GooglePlusExtractor {
             System.err.println(e.getMessage());
         }
 
+        mongoClient.close();
     }
 }
