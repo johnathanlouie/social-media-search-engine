@@ -39,9 +39,7 @@ public class Combiner {
     }
 
     public LinkedList getGooglePlusProfiles(String fullName) {
-        LinkedList gProfiles = null;
-        gProfiles = PersonReader.xmlDocument("/home/sashi/NetBeansProjects/universalprofile/src/test/file.xml");
-        return gProfiles;
+        return PersonReader.xmlDocument("/home/sashi/NetBeansProjects/universalprofile/src/test/file.xml");
     }
 
     public void retrieveProfiles(LinkedList<LinkedList> collection, String query) {
