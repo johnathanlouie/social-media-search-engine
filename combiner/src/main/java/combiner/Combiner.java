@@ -64,12 +64,10 @@ public class Combiner {
         return this.ce.combineAll();
     }
 
-    public LinkedList<Person> start(String query) {
-        LinkedList<LinkedList> collec;
-        LinkedList<Person> combined;
-        collec = new LinkedList();
+    public List<Person> start(String query) {
+        LinkedList<LinkedList> collec = new LinkedList();
+        List<Person> combined = this.combine(collec);
         this.retrieveProfiles(collec, query);
-        combined = this.combine(collec);
         // store in the database 
 
         return combined;
