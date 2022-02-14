@@ -52,9 +52,8 @@ public class CombinerTester {
     }
 
     public static LinkedList<Person> xmlAllPerson(Element profiles) {
-        LinkedList<Person> listP;
+        LinkedList<Person> listP = new LinkedList<>();
         NodeList profList;
-        listP = new LinkedList();
 
         profList = profiles.getElementsByTagName("Profile");
         for (int i = 0; i < profList.getLength(); i++) {
