@@ -15,7 +15,7 @@ public class Combiner {
     public CombinerEngine ce;
 
     public Combiner() {
-        this.ce = new CombinerEngine(new SpecialPersonChecker());
+        ce = new CombinerEngine(new SpecialPersonChecker());
     }
 
     public LinkedList<Person> getFacebookProfiles(String fullName) {
