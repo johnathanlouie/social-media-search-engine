@@ -77,9 +77,8 @@ public class Combiner {
 
     public static void main(String[] args) {
         Combiner combiner = new Combiner();
-        List<Person> cmb = combiner.start("Sashi Thapaliya");
-        for (int i = 0; i < cmb.size(); i++) {
-            System.out.println(cmb.get(i));
+        for (Person p : combiner.start("Sashi Thapaliya")) {
+            System.out.println(p);
         }
         System.exit(1);
         if (args.length > 3) {
