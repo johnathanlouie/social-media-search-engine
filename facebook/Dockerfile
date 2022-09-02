@@ -1,7 +1,7 @@
 FROM python:2.7.18-alpine3.11
 
 WORKDIR /app
-COPY . .
+COPY ./src/ /app/
 
 RUN pip2 install facebook-sdk
 RUN pip2 install beautifulsoup4
