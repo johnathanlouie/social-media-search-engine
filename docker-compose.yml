@@ -2,6 +2,7 @@ version: "3.9"
 services:
   web:
     build: .
+    container_name: smse-web
     ports:
       - 80:8080
       - 443:443
@@ -11,9 +12,11 @@ services:
     build: ./facebook
     networks:
       - devnet
+    container_name: smse-facebook
   mongodb:
     image: mongo:2.2.7
     networks:
       - devnet
 networks:
   devnet:
+    container_name: smse-mongodb
