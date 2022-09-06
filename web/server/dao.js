@@ -23,7 +23,8 @@ module.exports =
 			}
 		};
 var MongoClient = require("mongodb").MongoClient;
-var cfg = require("./config.js");
+var fs = require("fs");
+var cfg = JSON.parse(fs.readFileSync("./config.js", { encoding: "utf8" }));
 
 function connFailed(err)
 {
