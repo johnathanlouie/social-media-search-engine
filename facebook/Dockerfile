@@ -1,15 +1,11 @@
-FROM python:2.7.18-alpine3.11
+FROM python:2.7.13-jessie
 
-WORKDIR /app
+WORKDIR /app/
 COPY ./src/ /app/
+COPY ./requirements.txt /app/requirements.txt
 
-RUN pip2 install facebook-sdk
-RUN pip2 install beautifulsoup4
-RUN pip2 install pymongo
-# RUN pip2 install autopy
-RUN pip2 install Ghost.py
-RUN pip2 install autopep8
-RUN pip2 install PyYAML
-# RUN pip2 install flask
+RUN apt update && apt install -y libxtst-dev && apt-get clean
+RUN pip2 install -r ./requirements.txt
 
-ENTRYPOINT python2 fb.py
+ENTRYPOINT [ "python2" ]
+CMD [ "fb.py" ]
