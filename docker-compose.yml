@@ -11,5 +11,5 @@ services:
     build: ./facebook/
     container_name: smse-facebook
   mongodb:
-    image: mongo:2.2.7
+    image: mongo:3.4.2
     container_name: smse-mongodb
