@@ -6,17 +6,9 @@ services:
     ports:
       - 80:8080
       - 443:443
-    networks:
-      - devnet
   facebook:
     build: ./facebook
-    networks:
-      - devnet
     container_name: smse-facebook
   mongodb:
     image: mongo:2.2.7
-    networks:
-      - devnet
-networks:
-  devnet:
     container_name: smse-mongodb
