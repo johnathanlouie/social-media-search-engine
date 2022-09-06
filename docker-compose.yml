@@ -5,6 +5,8 @@ services:
     container_name: smse-web
     ports:
       - "80:8080"
+    depends_on:
+      - mongodb
   facebook:
     build: ./facebook/
     container_name: smse-facebook
