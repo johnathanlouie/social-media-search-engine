@@ -4,7 +4,7 @@ services:
     build: .
     container_name: smse-web
     ports:
-      - 80:8080
+      - "80:8080"
   facebook:
     build: ./facebook
     container_name: smse-facebook
