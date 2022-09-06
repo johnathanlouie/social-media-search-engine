@@ -96,6 +96,7 @@ typings/
 
 # Visual Studio Code
 .vscode/
+.devcontainer/
 
 # Netbeans
 nbproject/
