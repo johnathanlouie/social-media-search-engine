@@ -24,7 +24,7 @@ module.exports =
 		};
 var MongoClient = require("mongodb").MongoClient;
 var fs = require("fs");
-var cfg = JSON.parse(fs.readFileSync("./config.json", { encoding: "utf8" }));
+var cfg = JSON.parse(fs.readFileSync("server/config.json", { encoding: "utf8" }));
 
 function connFailed(err)
 {

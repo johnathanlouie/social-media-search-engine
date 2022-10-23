@@ -44,4 +44,4 @@ function startServer(err, data)
 	app.listen(cfg.server.port, serverSuccess);
 }
 
-fs.readFile("./config.json", "utf8", startServer);
+fs.readFile("server/config.json", "utf8", startServer);
