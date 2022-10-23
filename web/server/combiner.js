@@ -35,14 +35,14 @@ function runCombinerHandler(req, res)
 				}
 			}
 			function err(x) {
-				console.log("===========start===============")
+				console.log("===========start===============");
 				console.log(x);
-				console.log("===========end===============")
+				console.log("===========end===============");
 			}
 			function message(x) {
-				console.log("===========start===============")
+				console.log("===========start===============");
 				console.log(x);
-				console.log("===========end===============")
+				console.log("===========end===============");
 			}
 			child.on("error", err);
 			child.on("message", message);
