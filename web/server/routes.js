@@ -29,11 +29,6 @@ function broke(err, req, res, next)
 	res.status(500).json({status: "something serverside broke!"});
 }
 
-function serverSuccess()
-{
-	console.log(`Server is listening on port ${cfg.server.port}!`);
-}
-
 function startServer(err, data)
 {
 	if (err)
@@ -41,6 +36,12 @@ function startServer(err, data)
 		console.error(`Cannot read config file. ${err}`);
 	}
 	var cfg = JSON.parse(data);
+
+	function serverSuccess()
+	{
+		console.log(`Server is listening on port ${cfg.server.port}!`);
+	}
+
 	app.listen(cfg.server.port, serverSuccess);
 }
 
