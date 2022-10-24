@@ -17,48 +17,47 @@ function runCombinerHandler(req, res)
 		var cwd = path.normalize(__dirname);
 		var jarName = "uniprofile.jar";
 		var jarPath = path.join(cwd, jarName);
+		console.log(jarPath, col1, col2, col3);
 		if (fs.existsSync(jarPath))
 		{
-			var cmd = `java -jar uniprofile-1.0.jar ${col1} ${col2} ${col3}`;
 			var options = {};
 			options.cwd = cwd;
-			console.log(`${cwd}$ ${cmd}`);
 			var child = childProcess.spawn("java", ["-jar", jarName, col1, col2, col3], options);
 			function ran(exitCode)
 			{
 				if (exitCode === 0)
 				{
-					console.log("success: combiner zero exit code");
+					console.debug("success: combiner zero exit code");
 					res.json({status: "success: combiner zero exit code"});
 				} else {
 					console.log("failure: combiner nonzero exit code");
 					res.status(500).json({status: "failure: combiner nonzero exit code"});
 				}
 			}
-			function err(x) {
-				console.log("===========start===============");
-				console.log(x);
-				console.log("===========end===============");
+			function printStdout(chunk)
+			{
+				chunk = typeof chunk === "string" ? chunk : chunk.toString();
+				console.log(chunk);
 			}
-			function message(x) {
-				console.log("===========start===============");
-				console.log(x);
-				console.log("===========end===============");
+			function printStderr(chunk)
+			{
+				chunk = typeof chunk === "string" ? chunk : chunk.toString();
+				console.error(chunk);
 			}
-			child.on("error", err);
-			child.on("message", message);
 			child.on("close", ran);
+			child.stdout.on("data", printStdout);
+			child.stderr.on("data", printStderr);
 		}
 		else
 		{
-			console.log(`failure: missing combiner jar ${jarPath}`);
-			res.json({status: `failure: missing combiner jar ${jarPath}`});
+			console.error(`failure: missing combiner jar ${jarPath}`);
+			res.status(500).json({status: `failure: missing combiner jar ${jarPath}`});
 		}
 	}
 	else
 	{
-		console.log("failure: wrong number of collections");
-		res.json({status: "failure: wrong number of collections"});
+		console.error("failure: wrong number of collections");
+		res.status(400).json({status: "failure: wrong number of collections"});
 	}
 }
 
