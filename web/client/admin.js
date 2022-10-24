@@ -10,10 +10,17 @@ function runCombiner()
 		url: url,
 		type: "post",
 		success: handler,
+		error: errorHandler,
 		contentType: "application/json; charset=UTF-8",
 		dataType: "json",
 		data: data
 	});
+}
+
+function errorHandler(jqxhr, textStatus, errorThrown)
+{
+	console.error(`/combiner/run connection ${textStatus}`);
+	console.error(jqxhr.responseJSON.status);
 }
 
 function handler(data, status)

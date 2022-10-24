@@ -31,7 +31,7 @@ function runCombinerHandler(req, res)
 					res.json({status: "success: combiner zero exit code"});
 				} else {
 					console.log("failure: combiner nonzero exit code");
-					res.json({status: "failure: combiner nonzero exit code"});
+					res.status(500).json({status: "failure: combiner nonzero exit code"});
 				}
 			}
 			function err(x) {
