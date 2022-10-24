@@ -14,15 +14,16 @@ function runCombinerHandler(req, res)
 		var col1 = data[0];
 		var col2 = data[1];
 		var col3 = data[2];
-		var cwd = path.normalize(`${__dirname}`);
-		var jarPath = path.join(cwd, "uniprofile-1.0.jar");
+		var cwd = path.normalize(__dirname);
+		var jarName = "uniprofile.jar";
+		var jarPath = path.join(cwd, jarName);
 		if (fs.existsSync(jarPath))
 		{
 			var cmd = `java -jar uniprofile-1.0.jar ${col1} ${col2} ${col3}`;
 			var options = {};
 			options.cwd = cwd;
 			console.log(`${cwd}$ ${cmd}`);
-			var child = childProcess.spawn("java", ["-jar", "uniprofile-1.0-jar-with-dependencies.jar", col1, col2, col3], options);
+			var child = childProcess.spawn("java", ["-jar", jarName, col1, col2, col3], options);
 			function ran(exitCode)
 			{
 				if (exitCode === 0)
